@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -21,10 +22,7 @@ class Image {
   @Column({ length: 200 })
   url: string;
 
-  @OneToOne(() => Address, (address) => address.user)
-  address: Address;
-
-  @OneToMany(() => Announcement, (announcement) => announcement.user)
+  @ManyToOne(() => Announcement, (announcement) => announcement.images)
   announcement: Announcement;
 }
 

@@ -29,6 +29,9 @@ class Announcement {
   @Column({ length: 15 })
   color: string;
 
+  @Column({ length: 15 })
+  fuel: string;
+
   @Column({ type: "decimal", precision: 8, scale: 2 })
   list_price: number;
 
