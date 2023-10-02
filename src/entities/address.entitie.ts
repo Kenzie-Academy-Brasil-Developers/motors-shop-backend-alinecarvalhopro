@@ -6,14 +6,14 @@ class Address {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ length: 11 })
+  @Column({ length: 8 })
   cep: string;
 
   @Column({ length: 2 })
-  description: string;
+  state: string;
 
   @Column({ length: 30 })
-  status: string;
+  city: string;
 
   @Column({ length: 100 })
   street: string;
@@ -24,7 +24,9 @@ class Address {
   @Column({ length: 50 })
   complement: string;
 
-  @OneToOne(() => User, (User) => User.address)
+  @OneToOne(() => User, (User) => User.address,  {
+    onDelete: "CASCADE",
+})
   @JoinColumn()
   user: User;
 }

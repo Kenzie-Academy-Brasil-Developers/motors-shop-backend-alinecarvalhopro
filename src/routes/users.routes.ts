@@ -1,0 +1,36 @@
+import { Router } from "express";
+import { usersController } from "../controllers";
+import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middleware";
+import { userRequestSchema, userUdpateSchema } from "../schemas/user.schemas";
+import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware";
+import ensureUniqueEmail from "../middlewares/ensureUniqueEmail.middleware";
+import ensureUniqueCpf from "../middlewares/ensureUniqueCpf.middleware";
+
+const userRouter = Router();
+userRouter.post(
+  "",
+  ensureUniqueEmail,
+  ensureUniqueCpf,
+  ensureDataIsValidMiddleware(userRequestSchema),
+  (request, response) => {
+    usersController.create(request, response);
+  }
+);
+
+userRouter.use("/:id", ensureAuthMiddleware);
+
+userRouter.patch(
+  "/:id",
+  ensureUniqueEmail,
+  ensureUniqueCpf,
+  ensureDataIsValidMiddleware(userUdpateSchema),
+  (request, response) => {
+    usersController.update(request, response);
+  }
+);
+
+userRouter.delete("/:id", (request, response) => {
+  usersController.delete(request, response);
+});
+
+export { userRouter };

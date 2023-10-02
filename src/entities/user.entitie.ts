@@ -9,11 +9,6 @@ import { Address } from "./address.entitie";
 import { Announcement } from "./announcement.entitie";
 import { Comment } from "./comment.entitie";
 
-export enum AccountType {
-  BUYER = "buyer",
-  SALLER = "saller",
-}
-
 @Entity("users")
 class User {
   @PrimaryGeneratedColumn("uuid")
@@ -31,18 +26,19 @@ class User {
   @Column({ length: 11 })
   phone_number: string;
 
-  @Column({ type: Date })
+  @Column({ type: "date" })
   birth: string;
 
   @Column({ type: "text" })
   description: string;
 
+  @Column({ length: 120 })
+  password: string;
+
   @Column({
-    type: "enum",
-    enum: AccountType,
-    default: AccountType.BUYER,
+    default: false,
   })
-  account: AccountType;
+  seller: boolean;
 
   @OneToOne(() => Address, (address) => address.user)
   address: Address;

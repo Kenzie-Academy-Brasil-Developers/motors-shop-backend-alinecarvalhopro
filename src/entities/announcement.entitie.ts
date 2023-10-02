@@ -20,7 +20,7 @@ class Announcement {
   @Column({ length: 50 })
   model: string;
 
-  @Column({ length: 4})
+  @Column({ length: 4 })
   year: string;
 
   @Column({ type: "integer" })
@@ -41,7 +41,9 @@ class Announcement {
   @Column({ type: "text" })
   description: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, {
+    onDelete: "CASCADE",
+  })
   user: User;
 
   @OneToMany(() => Image, (image) => image.announcement)
