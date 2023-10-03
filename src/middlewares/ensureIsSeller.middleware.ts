@@ -9,13 +9,12 @@ const ensureIsSeller = async (
   next: NextFunction
 ): Promise<void> => {
   const userId = response.locals.userId;
-
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOne({
     where: {
-      id: userId
-    }
+      id: userId,
+    },
   });
 
   if (!user) {

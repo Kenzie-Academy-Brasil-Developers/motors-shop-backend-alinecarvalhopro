@@ -10,7 +10,7 @@ const ensureAuthMiddleware = (
 
   if (!token) {
     return response.status(401).json({
-      message: "invalid token",
+      message: "Invalid token",
     });
   }
 
@@ -22,7 +22,7 @@ const ensureAuthMiddleware = (
     (error: any, decoded: any) => {
       if (error) {
         return response.status(401).json({
-          message: "invalid token",
+          message: "Invalid token",
         });
       }
 

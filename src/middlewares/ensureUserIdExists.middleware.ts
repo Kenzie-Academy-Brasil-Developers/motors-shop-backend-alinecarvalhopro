@@ -9,15 +9,11 @@ const ensureUserIdExists = async (
   next: NextFunction
 ): Promise<void> => {
   const userId = request.params.id;
-  // const userRepository = AppDataSource.getRepository(User);
-
-  // const foundEntity: User | null = await userRepository.findOneBy({ id });
-  // if (!foundEntity) throw new AppError("User not found", 404);
 
   const userRepository = AppDataSource.getRepository(User);
   const findUser = await userRepository.findOne({
     where: {
-      id: userId
+      id: userId,
     },
   });
   if (!findUser) {

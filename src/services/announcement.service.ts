@@ -10,8 +10,6 @@ import { TImageRequest } from "../interfaces/image.interface";
 import { Image } from "../entities/image.entitie";
 import {
   announcementResponseSchema,
-  announcementResponseSchemaReadArray,
-  announcementSchemaRead,
   announcementUpdateSchemaPartial,
 } from "../schemas/announcement.schemas";
 import { AppError } from "../errors/appError";
@@ -82,9 +80,30 @@ export class AnnouncementService {
         images: true,
         user: true,
       },
+      select: {
+        user: {
+          id: true,
+          name: true,
+          description: true,
+          seller: true,
+          birth: true,
+          cpf: true,
+          email: true,
+          phone_number: true,
+          address: {
+            cep: true,
+            city: true,
+            complement: true,
+            id: true,
+            number: true,
+            state: true,
+            street: true,
+          },
+        },
+      },
     });
 
-    return announcementResponseSchemaReadArray.parse(returnData);
+    return returnData;
   }
 
   async findOne(id: string): Promise<TAnnouncementResponse> {
@@ -93,14 +112,39 @@ export class AnnouncementService {
       where: {
         id: id,
       },
-      relations: ["user", "images", "comments"],
+      relations: {
+        user: true,
+        comments: true,
+        images: true,
+      },
+      select: {
+        user: {
+          id: true,
+          name: true,
+          description: true,
+          seller: true,
+          birth: true,
+          cpf: true,
+          email: true,
+          phone_number: true,
+          address: {
+            cep: true,
+            city: true,
+            complement: true,
+            id: true,
+            number: true,
+            state: true,
+            street: true,
+          },
+        },
+      },
     });
 
     if (!announcement) {
       return { message: "Announcement not found", status: 404 };
     }
 
-    return { message: announcementSchemaRead.parse(announcement), status: 200 };
+    return { message: announcement, status: 200 };
   }
 
   async findByUser(userId: string) {
@@ -110,6 +154,25 @@ export class AnnouncementService {
     const findUser = await userRepository.findOne({
       where: {
         id: userId,
+      },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        seller: true,
+        birth: true,
+        cpf: true,
+        email: true,
+        phone_number: true,
+        address: {
+          cep: true,
+          city: true,
+          complement: true,
+          id: true,
+          number: true,
+          state: true,
+          street: true,
+        },
       },
     });
 
@@ -121,15 +184,29 @@ export class AnnouncementService {
       where: {
         user: { id: userId },
       },
-      relations: ["user", "images", "comments"],
+      relations: {
+        user: true,
+        comments: true,
+        images: true,
+      },
+      select: {
+        user: {
+          id: true,
+          name: true,
+          description: true,
+          seller: true,
+        },
+      },
     });
 
     if (!announcements) {
       return { message: "Announcement not found", status: 404 };
     }
 
-    return { message: announcementResponseSchemaReadArray.parse(announcements), status: 200 };
-
+    return {
+      message: announcements,
+      status: 200,
+    };
   }
 
   async update(

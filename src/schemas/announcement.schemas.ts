@@ -75,5 +75,5 @@ export {
   announcementUpdateSchemaPartial,
   announcementSchemaToUpdate,
   announcementSchemaRead,
-  announcementResponseSchemaReadArray
+  announcementResponseSchemaReadArray,
 };

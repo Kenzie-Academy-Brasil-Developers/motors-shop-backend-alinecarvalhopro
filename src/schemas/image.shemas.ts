@@ -13,4 +13,3 @@ const imageRequestSchema = imageSchema.omit({
 });
 
 export { imageSchema, imageRequestSchema };
-

@@ -11,7 +11,14 @@ type TUser = z.infer<typeof userSchema>;
 type TUserRequest = z.infer<typeof userRequestSchema>;
 type TUserResponse = z.infer<typeof userResponseSchema>;
 type TUserUdpate = z.infer<typeof userUdpateSchema>;
-type TUserUdpateRequest = DeepPartial<TUserRequest>
-type TUserUpateResponse = DeepPartial<TUserRequest>
+type TUserUdpateRequest = DeepPartial<TUserRequest>;
+type TUserUpateResponse = DeepPartial<TUserRequest>;
 
-export { TUser, TUserRequest, TUserResponse, TUserUdpate, TUserUdpateRequest, TUserUpateResponse };
+export {
+  TUser,
+  TUserRequest,
+  TUserResponse,
+  TUserUdpate,
+  TUserUdpateRequest,
+  TUserUpateResponse,
+};

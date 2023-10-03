@@ -10,7 +10,6 @@ import {
 } from "../interfaces/user.interfaces";
 import {
   userResponseSchema,
-  userUdpateResponseSchema,
 } from "../schemas/user.schemas";
 import { addressRequestSchema } from "../schemas/address.schemas";
 import { Address } from "../entities/address.entitie";
@@ -43,8 +42,6 @@ export class UserServices {
       });
 
     const foundAddress = await queryBuilder.getOne();
-
-    // if (foundAddress) throw new AppError("Address already exists", 409);
 
     const addressData = addressRequestSchema.parse(data.address);
     const addressToAdd = addressRepository.create(addressData);

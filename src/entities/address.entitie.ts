@@ -1,4 +1,10 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { User } from "./user.entitie";
 
 @Entity("addresses")
@@ -24,9 +30,9 @@ class Address {
   @Column({ length: 50 })
   complement: string;
 
-  @OneToOne(() => User, (User) => User.address,  {
+  @OneToOne(() => User, (User) => User.address, {
     onDelete: "CASCADE",
-})
+  })
   @JoinColumn()
   user: User;
 }

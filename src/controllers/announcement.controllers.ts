@@ -21,14 +21,16 @@ export class AnnouncementsController {
 
   async findOne(request: Request, response: Response) {
     const id = request.params.id;
-    const {message, status} = await this.announcementService.findOne(id);
-    response.status(status).json({message});
+    const { message, status } = await this.announcementService.findOne(id);
+    response.status(status).json({ message });
   }
 
   async findByUser(request: Request, response: Response) {
     const userId = request.params.id;
-    const {message, status} = await this.announcementService.findByUser(userId);
-    return response.status(status).json({message});
+    const { message, status } = await this.announcementService.findByUser(
+      userId
+    );
+    return response.status(status).json({ message });
   }
 
   async update(request: Request, response: Response) {
@@ -37,14 +39,12 @@ export class AnnouncementsController {
       request.body,
       announcementId
     );
-
     return response.json(updateAnnouncement);
   }
 
   async remove(request: Request, response: Response) {
     const announcementId = request.params.id;
     await this.announcementService.remove(announcementId);
-
     return response.status(204).send();
   }
 }

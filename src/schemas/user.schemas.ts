@@ -56,7 +56,7 @@ const userResponseSchema = userSchema.omit({
   password: true,
 });
 
-const userUdpateSchema = userRequestSchema.deepPartial()
+const userUdpateSchema = userRequestSchema.deepPartial();
 
 const userUdpateResponseSchema = userRequestSchema.deepPartial().omit({
   password: true,

@@ -6,14 +6,16 @@ export class UsersController {
   constructor(private userService: UserServices) {}
   async create(request: Request, response: Response) {
     const newUser = await this.userService.create(request.body);
-
     return response.status(201).json(newUser);
   }
 
   async update(request: Request, response: Response) {
     const userId = response.locals.userId;
     const { id } = request.params;
-    const updatedUser = await this.userService.update(id, request.body as TUserUdpateRequest);
+    const updatedUser = await this.userService.update(
+      id,
+      request.body as TUserUdpateRequest
+    );
     response.status(200).json(updatedUser);
   }
 
