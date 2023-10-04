@@ -384,7 +384,7 @@ EXEMPLO DE RESPOSTA DE SUCESSO <br/>
 status 204 no content
 
 
-### Criar comentário
+### Criar comentário (token)
 POST em /comments/announcements/:id <br/>
 
 EXEMPLO DE CORPO DE REQUISIÇÃO
@@ -425,7 +425,7 @@ status 200 ok
 ```
 
 
-### Buscar os comentários de um anúncio
+### Buscar os comentários de um anúncio (token)
 GET em /comments/announcements/:id <br/>
 
 SEM CORPO DE REQUISIÇÃO
