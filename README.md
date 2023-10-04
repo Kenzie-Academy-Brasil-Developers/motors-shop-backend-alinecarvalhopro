@@ -44,7 +44,9 @@ _API para gereciamento de uma aplicação de venda de veículos._
 ### Plataformas de apoio que utilizei no desenvolvimento:
 
 - DBeaver
-- Insomnia
+- Insomnia  <br/>
+*No projeto existe um arquivo chamado workspace.json que pode ser importado no Insomnia para testes. <br/>
+Nas rotas que necessitam de autenticação é necessário inserir o token que vem na resposta do login em Auth > Bearer Token > Token.
 
 ## Endpoints, com exemplos de requisição e reposta
 
