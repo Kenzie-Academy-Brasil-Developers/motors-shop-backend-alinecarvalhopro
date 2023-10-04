@@ -105,6 +105,18 @@ _As chaves "email" e "cpf" são únicas._
 EXEMPLO DE CORPO DE REQUISIÇÃO
 ```ruby
 {
+	
+	"name": "Aline Carvalho",
+	"address": {
+	"cep": "21222290"
+	}
+}
+```
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+```ruby
+{
 	"id": "8d2863b3-0a57-49ee-a498-52277e0a2e59",
 	"name": "Aline Carvalho",
 	"email": "alineseller@mail.com",
@@ -124,25 +136,12 @@ EXEMPLO DE CORPO DE REQUISIÇÃO
 }
 ```
 
-EXEMPLO DE RESPOSTA DE SUCESSO <br/>
-status 200 ok
-```ruby
-{
-	
-	"name": "Aline Carvalho",
-	"address": {
-	"cep": "21222290"
-	}
-}
-
-```
-
 ### Deletar usuário (token)
 DELETE em /users/:id <br/>
 
 SEM CORPO DE REQUISIÇÃO
 
-EXEMPLO DE RESPOSTA DE SUCESSO 
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
 status 204 no content
 
 
@@ -165,6 +164,96 @@ status 200 ok
 }
 ```
 
+### Criar anúncio (token)
+POST em /announcements <br/>
+
+EXEMPLO DE CORPO DE REQUISIÇÃO
+```ruby
+{
+	"brand": "Fiat",
+	"model": "500",
+	"list_price": 400000,
+	"price": 400000,
+	"year": "2012",
+	"mileage": 100000,
+	"description": "Excelente estado",
+	"color": "Amarelo",
+	"fuel": "Gasolina",
+	"images": [
+    {
+      "url": "www.url.com.br"
+    }
+  ]
+}
+```
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 201 created
+```ruby
+{
+	"id": "f3ca9e4b-12c8-40c2-91e8-0aaea35c8eba",
+	"brand": "Fiat",
+	"model": "500",
+	"year": "2012",
+	"mileage": 100000,
+	"color": "Amarelo",
+	"fuel": "Gasolina",
+	"list_price": "400000.00",
+	"price": "400000.00",
+	"description": "Excelente estado",
+	"user": {
+		"id": "604f4d93-699d-46d3-abd2-9bdbbc29652c",
+		"name": "Aline",
+		"email": "alineseller@mail.com",
+		"cpf": "22222222223",
+		"phone_number": "11111112222",
+		"birth": "2020-01-01",
+		"description": "Descrição",
+		"seller": true
+	},
+	"images": [
+		{
+			"url": "www.url.com.br"
+		}
+	]
+}
+```
+
+### Editar anúncio (token) 
+PATCH em /announcements/:id <br/>
+
+EXEMPLO DE CORPO DE REQUISIÇÃO
+```ruby
+{
+	"list_price": 42000
+}
+
+```
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+```ruby
+{
+	"id": "f3ca9e4b-12c8-40c2-91e8-0aaea35c8eba",
+	"brand": "Fiat",
+	"model": "500",
+	"year": "2012",
+	"mileage": 100000,
+	"color": "Amarelo",
+	"fuel": "Gasolina",
+	"list_price": "42000.00",
+	"price": "400000.00",
+	"description": "Excelente estado"
+}
+```
+
+### Deletar usuário (token)
+DELETE em /announcements/:id <br/>
+
+SEM CORPO DE REQUISIÇÃO
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 204 no content
 
 Licença MIT
 Fins educacionais.
