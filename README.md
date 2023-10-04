@@ -41,7 +41,7 @@ _API para gereciamento de uma aplicação de venda de veículos._
 - express-async-errors
 - reflect-metadata
 
-### Plataformas de apoio:
+### Plataformas de apoio que utilizei no desenvolvimento:
 
 - DBeaver
 - Insomnia
