@@ -382,7 +382,84 @@ EXEMPLO DE RESPOSTA DE SUCESSO <br/>
 status 204 no content
 
 
+### Criar comentário
+POST em /comments/announcements/:id <br/>
 
+EXEMPLO DE CORPO DE REQUISIÇÃO
+```ruby
+{
+	"comment": "Comentário criado com sucesso."
+}
+```
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 201 created
+```ruby
+{
+	"message": "Comment registered successfully"
+}
+```
+
+### Editar comentário (token) 
+PATCH em /comments/:id <br/>
+
+EXEMPLO DE CORPO DE REQUISIÇÃO
+```ruby
+{
+	"comment": "Comentário editado com sucesso"
+}
+```
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+```ruby
+{
+	"message": {
+		"id": "8ca83364-6840-47d8-b7da-4a2ee44432e4",
+		"comment": "Comentário editado com sucesso",
+		"date": "2023-10-04"
+	}
+}
+```
+
+
+### Buscar os comentários de um anúncio
+GET em /comments/announcements/:id <br/>
+
+SEM CORPO DE REQUISIÇÃO
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+
+```ruby
+[
+	{
+		"id": "8ca83364-6840-47d8-b7da-4a2ee44432e4",
+		"comment": "Comentário editado com sucesso",
+		"date": "2023-10-04",
+		"user": {
+			"id": "604f4d93-699d-46d3-abd2-9bdbbc29652c",
+			"name": "Aline",
+			"email": "alineseller@mail.com",
+			"cpf": "22222222223",
+			"phone_number": "11111112222",
+			"birth": "2020-01-01",
+			"description": "Descrição",
+			"seller": true
+		}
+	}
+]
+```
+
+### Deletar comentário (token)
+DELETE em /comments/:id <br/>
+
+SEM CORPO DE REQUISIÇÃO
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 204 no content
+
+<br/>
 Licença MIT
 Fins educacionais.
 
