@@ -1,4 +1,4 @@
-# motors-shop-backend-alinecarvalhopro
+# Motors Shop
 
 _API para gereciamento de uma aplicação de venda de veículos._
 
