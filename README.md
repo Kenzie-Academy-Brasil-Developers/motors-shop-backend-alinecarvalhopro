@@ -1,4 +1,4 @@
-# Motors Shop
+# Motors Shop 🚗 🚚 🏍️
 
 _API para gereciamento de uma aplicação de venda de veículos._
 
@@ -459,6 +459,7 @@ SEM CORPO DE REQUISIÇÃO
 EXEMPLO DE RESPOSTA DE SUCESSO <br/>
 status 204 no content
 
+<br/>
 <br/>
 Licença MIT
 Fins educacionais.
