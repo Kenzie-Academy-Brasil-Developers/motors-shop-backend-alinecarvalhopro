@@ -247,13 +247,141 @@ status 200 ok
 }
 ```
 
-### Deletar usuário (token)
+### Listar todos os anúncios
+GET em /announcements <br/>
+
+SEM CORPO DE REQUISIÇÃO
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+
+```ruby
+[
+	{
+		"id": "f3ca9e4b-12c8-40c2-91e8-0aaea35c8eba",
+		"brand": "Fiat",
+		"model": "500",
+		"year": "2012",
+		"mileage": 100000,
+		"color": "Amarelo",
+		"fuel": "Gasolina",
+		"list_price": "42000.00",
+		"price": "400000.00",
+		"description": "Excelente estado",
+		"comments": [],
+		"images": [
+			{
+				"id": "f08d9598-8440-4d3c-8ac2-ef87b4cb8e8b",
+				"url": "www.url.com.br"
+			}
+		],
+		"user": {
+			"id": "604f4d93-699d-46d3-abd2-9bdbbc29652c",
+			"name": "Aline",
+			"email": "alineseller@mail.com",
+			"cpf": "22222222223",
+			"phone_number": "11111112222",
+			"birth": "2020-01-01",
+			"description": "Descrição",
+			"seller": true
+		}
+	}
+]
+```
+
+### Listar todos os anúncios de um vendedor
+GET em /announcements/users/:id <br/>
+
+SEM CORPO DE REQUISIÇÃO
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+
+```ruby
+[
+	{
+		"id": "f3ca9e4b-12c8-40c2-91e8-0aaea35c8eba",
+		"brand": "Fiat",
+		"model": "500",
+		"year": "2012",
+		"mileage": 100000,
+		"color": "Amarelo",
+		"fuel": "Gasolina",
+		"list_price": "42000.00",
+		"price": "400000.00",
+		"description": "Excelente estado",
+		"comments": [],
+		"images": [
+			{
+				"id": "f08d9598-8440-4d3c-8ac2-ef87b4cb8e8b",
+				"url": "www.url.com.br"
+			}
+		],
+		"user": {
+			"id": "604f4d93-699d-46d3-abd2-9bdbbc29652c",
+			"name": "Aline",
+			"email": "alineseller@mail.com",
+			"cpf": "22222222223",
+			"phone_number": "11111112222",
+			"birth": "2020-01-01",
+			"description": "Descrição",
+			"seller": true
+		}
+	}
+]
+```
+
+### Buscar um anúncio
+GET em /announcements/:id <br/>
+
+SEM CORPO DE REQUISIÇÃO
+
+EXEMPLO DE RESPOSTA DE SUCESSO <br/>
+status 200 ok
+
+```ruby
+{
+	"message": {
+		"id": "f3ca9e4b-12c8-40c2-91e8-0aaea35c8eba",
+		"brand": "Fiat",
+		"model": "500",
+		"year": "2012",
+		"mileage": 100000,
+		"color": "Amarelo",
+		"fuel": "Gasolina",
+		"list_price": "42000.00",
+		"price": "400000.00",
+		"description": "Excelente estado",
+		"user": {
+			"id": "604f4d93-699d-46d3-abd2-9bdbbc29652c",
+			"name": "Aline",
+			"email": "alineseller@mail.com",
+			"cpf": "22222222223",
+			"phone_number": "11111112222",
+			"birth": "2020-01-01",
+			"description": "Descrição",
+			"seller": true
+		},
+		"comments": [],
+		"images": [
+			{
+				"id": "f08d9598-8440-4d3c-8ac2-ef87b4cb8e8b",
+				"url": "www.url.com.br"
+			}
+		]
+	}
+}
+```
+
+### Deletar anúncio (token)
 DELETE em /announcements/:id <br/>
 
 SEM CORPO DE REQUISIÇÃO
 
 EXEMPLO DE RESPOSTA DE SUCESSO <br/>
 status 204 no content
+
+
 
 Licença MIT
 Fins educacionais.
