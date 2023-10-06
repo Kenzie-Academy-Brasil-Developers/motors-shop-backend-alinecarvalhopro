@@ -5,6 +5,7 @@ import { userRequestSchema, userUdpateSchema } from "../schemas/user.schemas";
 import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware";
 import ensureUniqueEmail from "../middlewares/ensureUniqueEmail.middleware";
 import ensureUniqueCpf from "../middlewares/ensureUniqueCpf.middleware";
+import ensureUserIdExists from "../middlewares/ensureUserIdExists.middleware";
 
 const userRouter = Router();
 userRouter.post(
@@ -21,6 +22,7 @@ userRouter.use("/:id", ensureAuthMiddleware);
 
 userRouter.patch(
   "/:id",
+  ensureUserIdExists,
   ensureUniqueEmail,
   ensureUniqueCpf,
   ensureDataIsValidMiddleware(userUdpateSchema),
@@ -29,7 +31,7 @@ userRouter.patch(
   }
 );
 
-userRouter.delete("/:id", (request, response) => {
+userRouter.delete("/:id", ensureUserIdExists, (request, response) => {
   usersController.delete(request, response);
 });
 

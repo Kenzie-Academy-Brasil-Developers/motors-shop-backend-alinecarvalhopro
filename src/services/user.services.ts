@@ -1,7 +1,6 @@
 import { hash } from "bcryptjs";
 import { AppDataSource } from "../data-source";
 import { User } from "../entities/user.entitie";
-import { AppError } from "../errors/appError";
 import {
   TUserRequest,
   TUserResponse,
@@ -82,10 +81,6 @@ export class UserServices {
       relations: { address: true },
     });
 
-    if (!foundUser) {
-      throw new AppError("User not found", 404);
-    }
-
     const userData = { ...data };
     const addressData = { ...data.address };
 
@@ -120,8 +115,6 @@ export class UserServices {
         id: userId,
       },
     });
-
-    if (!findUser) throw new Error("User not found");
 
     await userRepository.remove(findUser);
 
