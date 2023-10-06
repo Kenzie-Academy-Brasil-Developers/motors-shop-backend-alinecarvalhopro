@@ -149,8 +149,8 @@ export class AnnouncementService {
 
   async findByUser(userId: string) {
     const announcementRepository = AppDataSource.getRepository(Announcement);
-
     const userRepository = AppDataSource.getRepository(User);
+
     const findUser = await userRepository.findOne({
       where: {
         id: userId,

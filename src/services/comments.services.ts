@@ -32,9 +32,6 @@ export class CommentService {
         comments: true,
       },
     });
-    if (!announcement) {
-      throw new AppError("Announcement not found", 404);
-    }
 
     let newComment = commentRepository.create({
       comment: data.comment,
@@ -60,9 +57,6 @@ export class CommentService {
         comments: true,
       },
     });
-    if (!announcement) {
-      return { message: "Announcement not found", status: 404 };
-    }
 
     const comments = await commentRepository.find({
       where: {
