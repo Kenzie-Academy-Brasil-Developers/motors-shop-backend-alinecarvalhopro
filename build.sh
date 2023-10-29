@@ -1,9 +1,9 @@
-// build.sh
-#!/usr/bin/env bash
-# exit on error
+#!/bin/bash
+# Exit on error
 set -o errexit
 
-cd src
+cd /opt/render/project
 yarn
+cd src
 yarn build
 yarn typeorm migration:run -d dist/data-source
