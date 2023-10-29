@@ -15,7 +15,7 @@ _API para gereciamento de uma aplicação de venda de veículos._
 
 ### Requisitos para instalação e uso:
 
-- Clonar o repositporio
+- Clonar o repositório
 - Criar um banco de dados utilizando PostgreSQL
 - Criar um arquivo .env e configurar de acordo com o .env.example
 - Rodar os comandos: <br/>
