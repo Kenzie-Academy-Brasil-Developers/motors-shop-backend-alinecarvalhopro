@@ -20,7 +20,7 @@ _API para gereciamento de uma aplicação de venda de veículos._
 - Criar um arquivo .env e configurar de acordo com o .env.example
 - Rodar os comandos: <br/>
    - `npm install` (Para instalar as dependências do projeto) <br/>
-   - `npm run migrate` (Para rodas as migrações) <br/>
+   - `npm run typeorm migration:run -- -d src/data-source` (Para rodas as migrações) <br/>
    - `npm run dev` (Para rodar o projeto) <br/>
 
 ### Tecnologias utilizadas:
