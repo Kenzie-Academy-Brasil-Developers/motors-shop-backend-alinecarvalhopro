@@ -31,6 +31,7 @@ _API para gereciamento de uma aplicação de venda de veículos._
 - POO
 - PostgreSQL
 - TypeORM
+- Render
 
 ### Bibliotecas:
 
@@ -47,6 +48,14 @@ _API para gereciamento de uma aplicação de venda de veículos._
 - Insomnia  <br/>
 *No projeto existe um arquivo chamado workspace.json que pode ser importado no Insomnia para testes. <br/>
 Nas rotas que necessitam de autenticação é necessário inserir o token que vem na resposta do login em Auth > Bearer Token > Token.
+
+Esta é uma aplicação Full-Stack 💡
+- Link para o Front-end: <br/>
+https://github.com/Kenzie-Academy-Brasil-Developers/motors-shop-frontend-alinecarvalhopro
+
+- Link do Deploy: <br/>
+https://motors-shop-alinecarvalho.vercel.app
+
 
 ## Endpoints, com exemplos de requisição e reposta
 
