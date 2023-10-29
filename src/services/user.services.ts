@@ -7,9 +7,7 @@ import {
   TUserUdpateRequest,
   TUserUpateResponse,
 } from "../interfaces/user.interfaces";
-import {
-  userResponseSchema,
-} from "../schemas/user.schemas";
+import { userResponseSchema } from "../schemas/user.schemas";
 import { addressRequestSchema } from "../schemas/address.schemas";
 import { Address } from "../entities/address.entitie";
 import { DeepPartial } from "typeorm";
@@ -67,6 +65,39 @@ export class UserServices {
     return userResponseSchema.parse(user);
   }
 
+  async getById(id: string): Promise<TUserResponse> {
+    const userRepository = AppDataSource.getRepository(User);
+    const foundUser = await userRepository.findOne({
+      where: {
+        id: id,
+      },
+      relations: { address: true, announcements: true, comments: true },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        seller: true,
+        birth: true,
+        cpf: true,
+        email: true,
+        phone_number: true,
+        address: {
+          cep: true,
+          city: true,
+          complement: true,
+          id: true,
+          number: true,
+          state: true,
+          street: true,
+        },
+        announcements: true,
+        comments: true,
+      },
+    });
+
+    return userResponseSchema.parse(foundUser);
+  }
+
   async update(
     id: string,
     data: TUserUdpateRequest
@@ -80,7 +111,6 @@ export class UserServices {
       },
       relations: { address: true },
     });
-
     const userData = { ...data };
     const addressData = { ...data.address };
 

@@ -9,6 +9,12 @@ export class UsersController {
     return response.status(201).json(newUser);
   }
 
+  async getById(request: Request, response: Response) {
+    const { id } = request.params;
+    const foundUser = await this.userService.getById(id);
+    response.status(200).json(foundUser);
+  }  
+
   async update(request: Request, response: Response) {
     const userId = response.locals.userId;
     const { id } = request.params;

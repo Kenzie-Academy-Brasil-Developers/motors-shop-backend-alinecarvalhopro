@@ -7,12 +7,12 @@ export class CommentController {
 
   async create(request: Request, response: Response) {
     const userId = response.locals.userId;
-    await this.commentService.create(
+    const comment = await this.commentService.create(
       request.body as TCommentRequest,
       userId,
-      request.params.announcementId
+      request.params.id
     );
-    response.status(201).json({ message: "Comment registered successfully" });
+    return response.status(201).json(comment);
   }
 
   async list(request: Request, response: Response) {

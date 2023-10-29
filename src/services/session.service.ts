@@ -27,7 +27,7 @@ class SessionService {
     }
 
     const token = jwt.sign(
-      { userName: findUser.name },
+      { name: findUser.name, id: findUser.id },
       process.env.SECRET_KEY!,
       { expiresIn: "1h", subject: findUser.id }
     );

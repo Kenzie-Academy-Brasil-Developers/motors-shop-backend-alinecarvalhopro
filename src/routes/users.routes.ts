@@ -18,6 +18,10 @@ userRouter.post(
   }
 );
 
+userRouter.get("/:id", ensureUserIdExists, (request, response) => {
+  usersController.getById(request, response);
+});
+
 userRouter.use("/:id", ensureAuthMiddleware);
 
 userRouter.patch(

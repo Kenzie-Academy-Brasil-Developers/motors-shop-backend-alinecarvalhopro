@@ -19,6 +19,7 @@ export class AnnouncementService {
     data: TAnnouncementRequest,
     userId: string
   ): Promise<TAnnouncementResponse> {
+    data.mileage = Number(data.mileage)
     const announcementRepository = AppDataSource.getRepository(Announcement);
     const userRepository = AppDataSource.getRepository(User);
     const imageRepository = AppDataSource.getRepository(Image);
@@ -114,7 +115,9 @@ export class AnnouncementService {
       },
       relations: {
         user: true,
-        comments: true,
+        comments: {
+          user: true
+        },
         images: true,
       },
       select: {
@@ -213,6 +216,7 @@ export class AnnouncementService {
     data: TAnnouncementUpdateSchema,
     announcementId: string
   ): Promise<TAnnouncementResponse> {
+    // data.mileage = Number(data.mileage)
     const announcementRepository = AppDataSource.getRepository(Announcement);
     const oldAnnouncement = await announcementRepository.findOneBy({
       id: announcementId,

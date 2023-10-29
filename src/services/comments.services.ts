@@ -10,7 +10,7 @@ export class CommentService {
     data: TCommentRequest,
     userId: string,
     announcementId: string
-  ): Promise<void> {
+  ): Promise<Comment> {
     const userRepository = AppDataSource.getRepository(User);
     const announcementRepository = AppDataSource.getRepository(Announcement);
     const commentRepository = AppDataSource.getRepository(Comment);
@@ -39,10 +39,12 @@ export class CommentService {
       user: user,
     });
 
-    await commentRepository.save(newComment);
+    const commentReturn = await commentRepository.save(newComment);
 
     announcement.comments.push(newComment);
     await announcementRepository.save(announcement);
+
+    return commentReturn;
   }
 
   async list(announcementId: string) {

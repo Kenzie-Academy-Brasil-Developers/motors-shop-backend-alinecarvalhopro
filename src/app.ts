@@ -6,9 +6,12 @@ import { userRouter } from "./routes/users.routes";
 import { sessionRouter } from "./routes/session.routes";
 import { announcementsRouter } from "./routes/announcements.routes";
 import { commentsRouter } from "./routes/comments.routes";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({origin: "http://localhost:5173"}))
 
 app.use("/users", userRouter);
 app.use("/login", sessionRouter);
